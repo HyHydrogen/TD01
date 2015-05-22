@@ -1,24 +1,53 @@
 package kgs.towerdefence.graphics;
 
 import javax.swing.JFrame;
-import java.awt.*;
 
-public class Window extends Canvas {
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsDevice;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
-    private JFrame frame;
+public class Window extends JFrame {
 
-    private Window(String title, int width, int height) {
-        frame = new JFrame(title);
-        getFrame().setMinimumSize(new Dimension(width, height));
-        getFrame().setMaximumSize(new Dimension(width, height));
-        getFrame().setPreferredSize(new Dimension(width, height));
+    private GraphicsEnvironment gEnvironment;
+    private GraphicsDevice gDevice;
+
+    private BufferedImage screenImage;
+
+    public Window(String title, int width, int height) {
+        super(title);
+
+        setPreferredSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(width, height));
+        setMaximumSize(new Dimension(width, height));
+        setVisible(true);
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        this.screenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        this.gEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        this.gDevice = gEnvironment.getDefaultScreenDevice();
+
+        this.setFullscreen(true);
     }
 
-    public void displayScreen() {
-
+    public static void main(String[] args) {
+        new Window("Test", 800, 600);
     }
 
-    public JFrame getFrame() {
-        return frame;
+    public void setFullscreen(boolean fullscreen) {
+        if(!fullscreen) {
+            gDevice.setFullScreenWindow(null);
+        } else if(fullscreen && gDevice.isFullScreenSupported()){
+            gDevice.setFullScreenWindow(this);
+        } else {
+            gDevice.setFullScreenWindow(null);
+        }
     }
+
+    public void paint() {
+        Graphics2D graphics = gEnvironment.createGraphics(screenImage);
+    }
+
 }
