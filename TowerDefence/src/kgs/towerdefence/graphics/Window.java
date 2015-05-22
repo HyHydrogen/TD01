@@ -1,11 +1,8 @@
 package kgs.towerdefence.graphics;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
-import java.awt.GraphicsEnvironment;
-import java.awt.GraphicsDevice;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Window extends JFrame {
@@ -14,6 +11,7 @@ public class Window extends JFrame {
     private GraphicsDevice gDevice;
 
     private BufferedImage screenImage;
+    private Canvas canvas;
 
     public Window(String title, int width, int height) {
         super(title);
@@ -24,12 +22,14 @@ public class Window extends JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.screenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         this.gEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         this.gDevice = gEnvironment.getDefaultScreenDevice();
+        this.setFullscreen(false);
 
-        this.setFullscreen(true);
+        this.canvas = new Canvas();
     }
 
     public static void main(String[] args) {
@@ -46,8 +46,8 @@ public class Window extends JFrame {
         }
     }
 
-    public void paint() {
-        Graphics2D graphics = gEnvironment.createGraphics(screenImage);
+    public Canvas getCanvas() {
+        return canvas;
     }
 
 }
