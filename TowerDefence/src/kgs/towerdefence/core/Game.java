@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable {
         }
         GlobalRenderer renderer  = new GlobalRenderer(game);
 
-        int[] localPixels = new int[100 * 100];
+        int[] localPixels = new int[150 * 150];
 
         Arrays.fill(localPixels, Color.BLUE.getRGB());
 

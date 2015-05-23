@@ -26,13 +26,16 @@ public class GlobalRenderer {
 
         Vector2f currentPanning = getPanning();
 
+        int xOffset = (int) (renderTo.getX() - currentPanning.getX());
+        int yOffset = (int) (renderTo.getY() - currentPanning.getY());
         for(int lX = 0; lX < width; lX++) {
-            float currentX = renderTo.getX() - currentPanning.getX() + lX;
+            int currentX = xOffset + lX;
 
             if(currentX < 0 || currentX > game.getWidth())
                 continue;
+
             for(int lY = 0; lY < width; lY++) {
-                float currentY = renderTo.getY() - currentPanning.getY() + lY;
+                int currentY = yOffset + lY;
 
                 if(currentY < 0 || currentY > game.getHeight())
                     continue;
@@ -41,8 +44,7 @@ public class GlobalRenderer {
 
                 if(renderPixel == 0)
                     continue;
-
-                imageData[(int) (currentY * game.getWidth() + currentX)] = renderPixel;
+                imageData[(int) ((currentY * game.width) + currentX)] = renderPixel;
             }
         }
     }
