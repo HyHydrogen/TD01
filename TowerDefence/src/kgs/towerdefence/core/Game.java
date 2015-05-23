@@ -20,16 +20,13 @@ public class Game extends Canvas implements Runnable {
 
     private Spritesheet sheet;
 
-    private final int width = 800, height = 600;
-    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-    private int[] imageData = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+    public final int width = 800, height = 600;
+    public BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
     public Game() {
         gameThread = new Thread(this);
         gameScreen = new Window("League of Legends Tower Defence", width, height);
         gameScreen.add(this);
-
-        Arrays.fill(imageData, Color.RED.getRGB());
     }
 
     public static void main(String[] args) {

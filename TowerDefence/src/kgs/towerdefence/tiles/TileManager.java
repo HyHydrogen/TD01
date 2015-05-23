@@ -15,7 +15,6 @@ public class TileManager {
         this.tileSheet = new Spritesheet("/tiles.png");
 
         TEST_TILE = new Tile(getTileImage(1), 1);
-
     }
 
     public BufferedImage getTileImage(int id) {

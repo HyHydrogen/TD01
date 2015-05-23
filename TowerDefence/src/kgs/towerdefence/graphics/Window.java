@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 
 public class Window extends JFrame {
 
-    private GraphicsEnvironment gEnvironment;
-    private GraphicsDevice gDevice;
+private GraphicsEnvironment gEnvironment;
+private GraphicsDevice gDevice;
 
-    private BufferedImage screenImage;
+private BufferedImage screenImage;
 
     public Window(String title, int width, int height) {
         super(title);
