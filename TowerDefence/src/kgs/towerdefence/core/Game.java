@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable {
 
     private Window gameScreen;
 
-    private Thread gameThread;
+    public Thread gameThread;
 
     private boolean isRunning = false;
 
@@ -33,15 +33,19 @@ public class Game extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         Game game = new Game();
-
         game.start();
+        try {
+            game.gameThread.sleep(1000);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        GlobalRenderer renderer  = new GlobalRenderer(game);
 
         int[] localPixels = new int[100 * 100];
 
-        Arrays.fill(localPixels, Color.RED.getRGB());
+        Arrays.fill(localPixels, Color.BLUE.getRGB());
 
-        GlobalRenderer renderer  = new GlobalRenderer(game);
-        renderer.render(localPixels, new Vector2f(15, 15));
+        renderer.render(localPixels, new Vector2f(0, 0));
     }
 
     public void start() {

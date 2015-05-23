@@ -28,11 +28,12 @@ public class GlobalRenderer {
 
         for(int lX = 0; lX < width; lX++) {
             float currentX = renderTo.getX() - currentPanning.getX() + lX;
+
             if(currentX < 0 || currentX > game.getWidth())
                 continue;
-
             for(int lY = 0; lY < width; lY++) {
                 float currentY = renderTo.getY() - currentPanning.getY() + lY;
+
                 if(currentY < 0 || currentY > game.getHeight())
                     continue;
 
@@ -40,6 +41,7 @@ public class GlobalRenderer {
 
                 if(renderPixel == 0)
                     continue;
+
                 imageData[(int) (currentY * game.getWidth() + currentX)] = renderPixel;
             }
         }
