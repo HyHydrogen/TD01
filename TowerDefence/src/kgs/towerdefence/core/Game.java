@@ -7,6 +7,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
+import kgs.towerdefence.engine.math.Vector2f;
+import kgs.towerdefence.graphics.GlobalRenderer;
 import kgs.towerdefence.graphics.Spritesheet;
 import kgs.towerdefence.graphics.Window;
 
@@ -33,6 +35,13 @@ public class Game extends Canvas implements Runnable {
         Game game = new Game();
 
         game.start();
+
+        int[] localPixels = new int[100 * 100];
+
+        Arrays.fill(localPixels, Color.RED.getRGB());
+
+        GlobalRenderer renderer  = new GlobalRenderer(game);
+        renderer.render(localPixels, new Vector2f(15, 15));
     }
 
     public void start() {

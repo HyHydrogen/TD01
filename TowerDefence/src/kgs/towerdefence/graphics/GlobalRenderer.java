@@ -13,10 +13,12 @@ public class GlobalRenderer {
 
     private Vector2f panning;
 
-    private int[] imageData = ((DataBufferInt) game.image.getRaster().getDataBuffer()).getData();
+    private int[] imageData;
 
     public GlobalRenderer(Game game) {
         this.game = game;
+        this.panning = new Vector2f(0,0);
+        imageData = ((DataBufferInt) game.image.getRaster().getDataBuffer()).getData();
     }
 
     public void render(int[] pixels, Vector2f renderTo) {

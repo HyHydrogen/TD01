@@ -22,7 +22,6 @@ public class Spritesheet {
             this.image = ImageIO.read(getClass().getResource(imagePath));
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
