@@ -1,14 +1,9 @@
 package kgs.towerdefence.core;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.util.Arrays;
-import kgs.towerdefence.engine.math.Vector2f;
-import kgs.towerdefence.graphics.GlobalRenderer;
 import kgs.towerdefence.graphics.Spritesheet;
 import kgs.towerdefence.graphics.Window;
 
@@ -39,13 +34,6 @@ public class Game extends Canvas implements Runnable {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        GlobalRenderer renderer  = new GlobalRenderer(game);
-
-        int[] localPixels = new int[150 * 150];
-
-        Arrays.fill(localPixels, Color.BLUE.getRGB());
-
-        renderer.render(localPixels, new Vector2f(0, 0));
     }
 
     public void start() {
