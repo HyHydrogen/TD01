@@ -11,7 +11,6 @@ public class Window extends JFrame {
     private GraphicsDevice gDevice;
 
     private BufferedImage screenImage;
-    private Canvas canvas;
 
     public Window(String title, int width, int height) {
         super(title);
@@ -28,12 +27,6 @@ public class Window extends JFrame {
         this.gEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         this.gDevice = gEnvironment.getDefaultScreenDevice();
         this.setFullscreen(false);
-
-        this.canvas = new Canvas();
-    }
-
-    public static void main(String[] args) {
-        new Window("Test", 800, 600);
     }
 
     public void setFullscreen(boolean fullscreen) {
@@ -45,9 +38,4 @@ public class Window extends JFrame {
             gDevice.setFullScreenWindow(null);
         }
     }
-
-    public Canvas getCanvas() {
-        return canvas;
-    }
-
 }
