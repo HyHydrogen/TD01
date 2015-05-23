@@ -1,13 +1,14 @@
 package kgs.towerdefence.core;
 
-import kgs.towerdefence.engine.math.Vector2f;
-import kgs.towerdefence.graphics.Window;
-
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.Random;
+import java.util.Arrays;
+import kgs.towerdefence.graphics.Spritesheet;
+import kgs.towerdefence.graphics.Window;
 
 public class Game extends Canvas implements Runnable {
 
@@ -17,15 +18,18 @@ public class Game extends Canvas implements Runnable {
 
     private boolean isRunning = false;
 
+    private Spritesheet sheet;
 
     private final int width = 800, height = 600;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-    private int[] imageData = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+    private int[] imageData = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 
     public Game() {
         gameThread = new Thread(this);
         gameScreen = new Window("League of Legends Tower Defence", width, height);
         gameScreen.add(this);
+
+        Arrays.fill(imageData, Color.RED.getRGB());
     }
 
     public static void main(String[] args) {
@@ -62,14 +66,13 @@ public class Game extends Canvas implements Runnable {
     public void render() {
         BufferStrategy strategy = this.getBufferStrategy();
 
-        if(strategy == null) {
+        if (strategy == null) {
             createBufferStrategy(2);
             return;
         }
 
         Graphics2D drawGraphics = (Graphics2D) strategy.getDrawGraphics();
-
-        drawGraphics.drawImage(image,0,0,width,height,null);
+        drawGraphics.drawImage(image, 0, 0, width, height, null);
 
         strategy.show();
         drawGraphics.dispose();
@@ -89,7 +92,7 @@ public class Game extends Canvas implements Runnable {
             delta += (now - lastTime) / ns;
             lastTime = now;
 
-            while(delta >= 1) {
+            while (delta >= 1) {
                 tick();
                 delta--;
                 ticks++;
@@ -99,7 +102,7 @@ public class Game extends Canvas implements Runnable {
             frames++;
 
 
-            if(System.currentTimeMillis() - 1000 > timer) {
+            if (System.currentTimeMillis() - 1000 > timer) {
                 System.out.printf("Ticks: %s, Frames: %s\n", ticks, frames);
                 ticks = 0;
                 frames = 0;
@@ -116,6 +119,7 @@ public class Game extends Canvas implements Runnable {
 
         stop();
     }
+
     public void setRunning(boolean running) {
         this.isRunning = running;
     }
