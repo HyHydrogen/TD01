@@ -1,10 +1,11 @@
 package kgs.towerdefence.Entities;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.StructureLoader;
 import kgs.towerdefence.tiles.TileManager;
 import java.awt.*;
 
 
 
-public class Inhibitor {
+public class Inhibitor extends Structure {
 
     private Image image;
 

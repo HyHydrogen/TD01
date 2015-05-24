@@ -4,8 +4,10 @@ import kgs.towerdefence.tiles.TileManager;
 
 import java.awt.*;
 
-public class Turret {
+public class Turret extends Structure{
     private Image image;
+
+
 
     public Turret(Image image){
         this.image = image;

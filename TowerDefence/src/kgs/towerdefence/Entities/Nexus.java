@@ -4,7 +4,7 @@ import kgs.towerdefence.tiles.TileManager;
 
 import java.awt.*;
 
-public class Nexus {
+public class Nexus extends Structure {
     private Image image;
 
     public Nexus(Image image){
