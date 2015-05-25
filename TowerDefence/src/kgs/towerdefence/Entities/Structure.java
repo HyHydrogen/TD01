@@ -5,6 +5,7 @@ public class Structure {
     private int x,y;
     private int type;
     public int damage, attackRange, magicResist, Armor;
+
     public void Turret(){
         health = 2000;
         int x = 0;

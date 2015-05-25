@@ -9,33 +9,26 @@ public class Inhibitor extends Structure {
 
     private Image image;
 
-    public Inhibitor(Image image){
+    public Inhibitor(Image image) {
         this.image = image;
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return image.getWidth(null);
     }
 
-    public int getHeight(){
+    public int getHeight() {
         return image.getHeight(null);
     }
 
-    public void draw(Graphics g,int x, int y){
-        g.drawImage(image,x,y,null);
+    public void draw(Graphics g, int x, int y) {
+        g.drawImage(image, x, y, null);
     }
 
-    public Image getSprite(int x, int y){
-        getSprite(2,1);
+    public Image getSprite(int x, int y) {
+        getSprite(2, 1);
         return image;
+
     }
-
-
-
-
-
-
-
-
 
 }
